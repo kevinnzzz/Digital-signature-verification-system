@@ -61,7 +61,7 @@ model = joblib.load('model_knn_new.pkl')
 # Contoh gambar
 sample_options_1 = {
     "Asli 1": "01_068.png",
-    "Asli 2": "05_068.png"
+    "Asli 2": "12_068.png"
 }
 
 sample_options_2 = {
