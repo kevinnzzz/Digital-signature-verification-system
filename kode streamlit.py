@@ -58,9 +58,12 @@ def testing(img1_path, img2_path):
 # Load model
 model = joblib.load('model_knn.pkl')
 
-# Gambar contoh
-sample_options = {
-    "Genuine 1": "06_068.png",
+# Gambar contoh khusus masing-masing kolom
+sample_options_1 = {
+    "Genuine 1": "06_068.png"
+}
+
+sample_options_2 = {
     "Genuine 2": "07_068.png",
     "Forged 1": "03_0113068.PNG"
 }
@@ -72,7 +75,7 @@ col1, col2 = st.columns(2)
 
 with col1:
     st.subheader("Gambar 1 (Referensi)")
-    img1_option = st.radio("Pilih atau Upload Gambar 1:", list(sample_options.keys()) + ["Upload sendiri"])
+    img1_option = st.radio("Pilih atau Upload Gambar 1:", list(sample_options_1.keys()) + ["Upload sendiri"])
     if img1_option == "Upload sendiri":
         uploaded_img1 = st.file_uploader("Upload Gambar 1", key="img1")
         if uploaded_img1 is not None:
@@ -82,12 +85,12 @@ with col1:
             img1_disp = Image.open(img1_path)
             st.image(img1_disp, caption="Gambar 1", use_container_width=True)
     else:
-        img1_path = sample_options[img1_option]
+        img1_path = sample_options_1[img1_option]
         st.image(img1_path, caption="Gambar 1", use_container_width=True)
 
 with col2:
     st.subheader("Gambar 2 (Pembanding)")
-    img2_option = st.radio("Pilih atau Upload Gambar 2:", list(sample_options.keys()) + ["Upload sendiri"], key="img2")
+    img2_option = st.radio("Pilih atau Upload Gambar 2:", list(sample_options_2.keys()) + ["Upload sendiri"], key="img2")
     if img2_option == "Upload sendiri":
         uploaded_img2 = st.file_uploader("Upload Gambar 2", key="img2")
         if uploaded_img2 is not None:
@@ -97,7 +100,7 @@ with col2:
             img2_disp = Image.open(img2_path)
             st.image(img2_disp, caption="Gambar 2", use_container_width=True)
     else:
-        img2_path = sample_options[img2_option]
+        img2_path = sample_options_2[img2_option]
         st.image(img2_path, caption="Gambar 2", use_container_width=True)
 
 # Tombol Prediksi
