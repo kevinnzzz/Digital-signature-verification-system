@@ -5,7 +5,7 @@ import os
 from PIL import Image
 import cv2
 
-# Fungsi testing (copy dari yang Anda miliki)
+# Fungsi testing
 def testing(img1_path, img2_path):
     img1 = cv2.imread(img1_path)
     img2 = cv2.imread(img2_path)
@@ -80,10 +80,10 @@ with col1:
             with open(img1_path, "wb") as f:
                 f.write(uploaded_img1.read())
             img1_disp = Image.open(img1_path)
-            st.image(img1_disp, caption="Gambar 1", use_column_width=True)
+            st.image(img1_disp, caption="Gambar 1", use_container_width=True)
     else:
         img1_path = sample_options[img1_option]
-        st.image(img1_path, caption="Gambar 1", use_column_width=True)
+        st.image(img1_path, caption="Gambar 1", use_container_width=True)
 
 with col2:
     st.subheader("Gambar 2 (Pembanding)")
@@ -95,10 +95,10 @@ with col2:
             with open(img2_path, "wb") as f:
                 f.write(uploaded_img2.read())
             img2_disp = Image.open(img2_path)
-            st.image(img2_disp, caption="Gambar 2", use_column_width=True)
+            st.image(img2_disp, caption="Gambar 2", use_container_width=True)
     else:
         img2_path = sample_options[img2_option]
-        st.image(img2_path, caption="Gambar 2", use_column_width=True)
+        st.image(img2_path, caption="Gambar 2", use_container_width=True)
 
 # Tombol Prediksi
 if st.button("Predict"):
