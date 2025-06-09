@@ -56,7 +56,7 @@ def testing(img1_path, img2_path):
     ]
 
 # Load model
-model = joblib.load('model_knn.pkl')
+model = joblib.load('model_knn_new.pkl')
 
 # Contoh gambar
 sample_options_1 = {
