@@ -1,9 +1,9 @@
 import streamlit as st
-import cv2
 import numpy as np
 import joblib
 import os
 from PIL import Image
+import cv2
 
 # Fungsi testing (copy dari yang Anda miliki)
 def testing(img1_path, img2_path):
