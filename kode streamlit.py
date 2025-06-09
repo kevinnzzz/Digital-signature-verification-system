@@ -60,9 +60,9 @@ model = joblib.load('model_knn.pkl')
 
 # Gambar contoh
 sample_options = {
-    "Genuine 1": "068/06_068.png",
-    "Genuine 2": "068/07_068.png",
-    "Forged 1": "068_forg/03_0113068.PNG"
+    "Genuine 1": "06_068.png",
+    "Genuine 2": "07_068.png",
+    "Forged 1": "03_0113068.PNG"
 }
 
 st.title("Signature Verification System")
