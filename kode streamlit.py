@@ -58,7 +58,7 @@ def testing(img1_path, img2_path):
 # Load model
 model = joblib.load('model_knn.pkl')
 
-# Gambar contoh khusus masing-masing kolom
+# Contoh gambar
 sample_options_1 = {
     "Genuine 1": "06_068.png"
 }
@@ -70,49 +70,42 @@ sample_options_2 = {
 
 st.title("Digital Signature Verification System")
 
-# Kolom untuk memilih gambar
+# Kolom untuk dua gambar
 col1, col2 = st.columns(2)
 
 with col1:
     st.subheader("Gambar 1 (Referensi)")
 
-    # Pilihan radio dulu
-    img1_option = st.radio("Pilih atau Upload Gambar 1:", list(sample_options_1.keys()) + ["Upload sendiri"], key="img1_radio")
+    # Tampilkan gambar default atau upload
+    img1_option = st.radio("Pilih Gambar 1:", list(sample_options_1.keys()) + ["Upload sendiri"], key="img1_radio")
 
-    # Upload kalau opsi upload dipilih
     if img1_option == "Upload sendiri":
-        uploaded_img1 = st.file_uploader("Upload Gambar 1", key="img1_upload")
+        uploaded_img1 = st.file_uploader("Upload Gambar 1", type=["png", "jpg", "jpeg"], key="img1_upload")
         if uploaded_img1 is not None:
-            img1_path = f"temp_img1.png"
+            img1_path = "temp_img1.png"
             with open(img1_path, "wb") as f:
                 f.write(uploaded_img1.read())
-            img1_disp = Image.open(img1_path)
-            st.image(img1_disp, caption="Gambar 1", use_container_width=True)
+            st.image(img1_path, caption="Gambar 1", use_container_width=True)
     else:
         img1_path = sample_options_1[img1_option]
-        img1_disp = Image.open(img1_path)
-        st.image(img1_disp, caption="Gambar 1", use_container_width=True)
+        st.image(img1_path, caption="Gambar 1", use_container_width=True)
 
 with col2:
     st.subheader("Gambar 2 (Pembanding)")
 
-    # Pilihan radio dulu
-    img2_option = st.radio("Pilih atau Upload Gambar 2:", list(sample_options_2.keys()) + ["Upload sendiri"], key="img2_radio")
+    # Tampilkan gambar default atau upload
+    img2_option = st.radio("Pilih Gambar 2:", list(sample_options_2.keys()) + ["Upload sendiri"], key="img2_radio")
 
-    # Upload kalau opsi upload dipilih
     if img2_option == "Upload sendiri":
-        uploaded_img2 = st.file_uploader("Upload Gambar 2", key="img2_upload")
+        uploaded_img2 = st.file_uploader("Upload Gambar 2", type=["png", "jpg", "jpeg"], key="img2_upload")
         if uploaded_img2 is not None:
-            img2_path = f"temp_img2.png"
+            img2_path = "temp_img2.png"
             with open(img2_path, "wb") as f:
                 f.write(uploaded_img2.read())
-            img2_disp = Image.open(img2_path)
-            st.image(img2_disp, caption="Gambar 2", use_container_width=True)
+            st.image(img2_path, caption="Gambar 2", use_container_width=True)
     else:
         img2_path = sample_options_2[img2_option]
-        img2_disp = Image.open(img2_path)
-        st.image(img2_disp, caption="Gambar 2", use_container_width=True)
-
+        st.image(img2_path, caption="Gambar 2", use_container_width=True)
 
 # Tombol Prediksi
 if st.button("Predict"):
@@ -121,4 +114,5 @@ if st.button("Predict"):
         hasil = model.predict([fitur])[0]
         st.success("Matched!" if hasil == 0 else "Not Matched!")
     else:
-        st.warning("Pastikan kedua gambar telah dipilih atau diupload dengan benar.")
+        st.warning("Pastikan kedua gambar sudah dipilih atau diupload.")
+
