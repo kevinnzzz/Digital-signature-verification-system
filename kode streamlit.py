@@ -60,12 +60,13 @@ model = joblib.load('model_knn.pkl')
 
 # Contoh gambar
 sample_options_1 = {
-    "Genuine 1": "06_068.png"
+    "Asli 1": "06_068.png",
+    "Asli 2": "05_068.png"
 }
 
 sample_options_2 = {
-    "Genuine 2": "07_068.png",
-    "Forged 1": "03_0113068.PNG"
+    "Asli": "07_068.png",
+    "Palsu": "03_0113068.PNG"
 }
 
 st.title("Digital Signature Verification System")
