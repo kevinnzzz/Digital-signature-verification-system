@@ -75,15 +75,11 @@ col1, col2 = st.columns(2)
 
 with col1:
     st.subheader("Gambar 1 (Referensi)")
-    
-    # Default gambar awal
-    img1_disp = Image.open(sample_options_1["Genuine 1"])
-    st.image(img1_disp, caption="Gambar 1", use_container_width=True)
-    img1_path = sample_options_1["Genuine 1"]
 
-    # Pilihan radio di bawah gambar
+    # Pilihan radio dulu
     img1_option = st.radio("Pilih atau Upload Gambar 1:", list(sample_options_1.keys()) + ["Upload sendiri"], key="img1_radio")
 
+    # Upload kalau opsi upload dipilih
     if img1_option == "Upload sendiri":
         uploaded_img1 = st.file_uploader("Upload Gambar 1", key="img1_upload")
         if uploaded_img1 is not None:
@@ -100,14 +96,10 @@ with col1:
 with col2:
     st.subheader("Gambar 2 (Pembanding)")
 
-    # Default gambar awal
-    img2_disp = Image.open(sample_options_2["Genuine 2"])
-    st.image(img2_disp, caption="Gambar 2", use_container_width=True)
-    img2_path = sample_options_2["Genuine 2"]
-
-    # Pilihan radio di bawah gambar
+    # Pilihan radio dulu
     img2_option = st.radio("Pilih atau Upload Gambar 2:", list(sample_options_2.keys()) + ["Upload sendiri"], key="img2_radio")
 
+    # Upload kalau opsi upload dipilih
     if img2_option == "Upload sendiri":
         uploaded_img2 = st.file_uploader("Upload Gambar 2", key="img2_upload")
         if uploaded_img2 is not None:
@@ -120,6 +112,7 @@ with col2:
         img2_path = sample_options_2[img2_option]
         img2_disp = Image.open(img2_path)
         st.image(img2_disp, caption="Gambar 2", use_container_width=True)
+
 
 # Tombol Prediksi
 if st.button("Predict"):
