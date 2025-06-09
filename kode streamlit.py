@@ -113,6 +113,9 @@ if st.button("Predict"):
     if os.path.exists(img1_path) and os.path.exists(img2_path):
         fitur = testing(img1_path, img2_path)
         hasil = model.predict([fitur])[0]
-        st.success("Matched!" if hasil == 0 else "Not Matched!")
+        if hasil == 0:
+            st.success("Cocok")
+        else:
+            st.warning("Tidak Cocok")
     else:
         st.warning("Pastikan kedua gambar sudah dipilih atau diupload.")
