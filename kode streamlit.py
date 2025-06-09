@@ -75,6 +75,8 @@ col1, col2 = st.columns(2)
 
 with col1:
     st.subheader("Gambar 1 (Referensi)")
+
+    # Tampilkan gambar default atau upload
     img1_option = st.radio("Pilih Gambar 1:", list(sample_options_1.keys()) + ["Upload sendiri"], key="img1_radio")
 
     if img1_option == "Upload sendiri":
@@ -83,13 +85,15 @@ with col1:
             img1_path = "temp_img1.png"
             with open(img1_path, "wb") as f:
                 f.write(uploaded_img1.read())
-            st.image(img1_path, caption="Gambar 1", width=250)
+            st.image(img1_path, caption="Gambar 1", use_container_width=True)
     else:
         img1_path = sample_options_1[img1_option]
-        st.image(img1_path, caption="Gambar 1", width=250)
+        st.image(img1_path, caption="Gambar 1", use_container_width=True)
 
 with col2:
     st.subheader("Gambar 2 (Pembanding)")
+
+    # Tampilkan gambar default atau upload
     img2_option = st.radio("Pilih Gambar 2:", list(sample_options_2.keys()) + ["Upload sendiri"], key="img2_radio")
 
     if img2_option == "Upload sendiri":
@@ -98,11 +102,10 @@ with col2:
             img2_path = "temp_img2.png"
             with open(img2_path, "wb") as f:
                 f.write(uploaded_img2.read())
-            st.image(img2_path, caption="Gambar 2", width=250)
+            st.image(img2_path, caption="Gambar 2", use_container_width=True)
     else:
         img2_path = sample_options_2[img2_option]
-        st.image(img2_path, caption="Gambar 2", width=250)
-
+        st.image(img2_path, caption="Gambar 2", use_container_width=True)
 
 # Tombol Prediksi
 if st.button("Predict"):
@@ -112,4 +115,3 @@ if st.button("Predict"):
         st.success("Matched!" if hasil == 0 else "Not Matched!")
     else:
         st.warning("Pastikan kedua gambar sudah dipilih atau diupload.")
-
