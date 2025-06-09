@@ -65,7 +65,7 @@ sample_options = {
     "Forged 1": "03_0113068.PNG"
 }
 
-st.title("Signature Verification System")
+st.title("Digital Signature Verification System")
 
 # Kolom untuk memilih gambar
 col1, col2 = st.columns(2)
