@@ -60,13 +60,13 @@ model = joblib.load('model_knn_new.pkl')
 
 # Contoh gambar
 sample_options_1 = {
-    "Asli 1": "01_068.png",
-    "Asli 2": "12_068.png"
+    "01_068.png": "01_068.png",
+    "12_068.png": "12_068.png"
 }
 
 sample_options_2 = {
-    "Asli": "07_068.png",
-    "Palsu": "03_0124068.PNG"
+    "07_068.png": "07_068.png",
+    "03_0124068.PNG": "03_0124068.PNG"
 }
 
 st.title("Digital Signature Verification System")
@@ -114,8 +114,8 @@ if st.button("Predict"):
         fitur = testing(img1_path, img2_path)
         hasil = model.predict([fitur])[0]
         if hasil == 0:
-            st.success("Cocok")
+            st.success("Tanda Tangan Cocok")
         else:
-            st.warning("Tidak Cocok")
+            st.warning("Tanda Tangan Tidak Cocok")
     else:
         st.warning("Pastikan kedua gambar sudah dipilih atau diupload.")
